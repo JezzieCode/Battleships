@@ -110,4 +110,16 @@ class BattleshipGame:
         guess_row = random.randint(0, self.grid_size - 1)
         guess_col = random.randint(0, self.grid_size - 1)
         return guess_row, guess_col
-        
+        def check_guess(self, guess, target_grid):
+        row, col = guess
+        if target_grid[row][col] != 'O':
+            ship_label = target_grid[row][col]
+            target_grid[row][col] = 'X'
+            return "Hit! You hit the {} battleship.".format(ship_label)
+        else:
+            return "Miss! You missed the target."
+
+if __name__ == "__main__":
+    grid_size = int(input("Enter the grid size for the Battleships game: "))
+    game = BattleshipGame(grid_size)
+    game.play()
