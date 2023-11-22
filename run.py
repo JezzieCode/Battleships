@@ -51,26 +51,29 @@ class BattleshipGame:
             self.place_ship(grid, ship_size, ship_label)
 
     def place_ship(self, grid, ship_size, ship_label):
-        while True:
-            orientation = random.choice(['H', 'V'])
+    while True:
+        orientation = random.choice(['H', 'V'])
+
+        if ship_size == self.grid_size:
+            # If ship_size is equal to grid_size, place the ship horizontally
+            row = random.randint(0, self.grid_size - 1)
+            col = 0
+        else:
             if orientation == 'H':
                 row = random.randint(0, self.grid_size - 1)
                 col = random.randint(0, self.grid_size - ship_size)
-                if all(grid[row][col + i] == 'O' for i in range(ship_size)):
-                    for i in range(ship_size):
-                        grid[row][col + i] = ship_label
-                    break
             else:
                 row = random.randint(0, self.grid_size - ship_size)
                 col = random.randint(0, self.grid_size - 1)
-                if all(grid[row + i][col] == 'O' for i in range(ship_size)):
-                    for i in range(ship_size):
-                        grid[row + i][col] = ship_label
-                    break
+
+        if all(grid[row][col + i] == 'O' for i in range(ship_size)):
+            for i in range(ship_size):
+                grid[row][col + i] = ship_label
+            break
                 
         def print_grid(self, grid):
             for row in grid:
-                print(" ".join(row))
+            print(" ".join(row))
 
     def player_turn(self):
         while True:
