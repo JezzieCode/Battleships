@@ -66,3 +66,48 @@ class BattleshipGame:
                     for i in range(ship_size):
                         grid[row + i][col] = ship_label
                     break
+                def print_grid(self, grid):
+        for row in grid:
+            print(" ".join(row))
+
+    def player_turn(self):
+        while True:
+            try:
+                guess_row = int(input("Enter the row number to guess (0 to {}): ".format(self.grid_size - 1)))
+                guess_col = int(input("Enter the column number to guess (0 to {}): ".format(self.grid_size - 1)))
+                if 0 <= guess_row < self.grid_size and 0 <= guess_col < self.grid_size:
+                    return guess_row, guess_col
+                else:
+                    print("Invalid input. Row and column must be between 0 and {}.".format(self.grid_size - 1))
+            except ValueError:
+                print("Invalid input. Please enter a number.")
+
+    def play(self):
+        while True:
+            print("Player's Grid:")
+            self.print_grid(self.player_grid)
+
+            print("Computer's Grid:")
+            self.print_grid(self.computer_grid)
+
+            player_guess = self.player_turn()
+            result = self.check_guess(player_guess, self.computer_grid)
+            print(result)
+
+            if all(all(cell != 'O' for cell in row) for row in self.computer_grid):
+                print("Congratulations! You sunk all the computer's battleships. You win!")
+                break
+
+            computer_guess = self.computer_turn()
+            result = self.check_guess(computer_guess, self.player_grid)
+            print(result)
+
+            if all(all(cell != 'O' for cell in row) for row in self.player_grid):
+                print("Game over! The computer sunk all your battleships. You lose!")
+                break
+
+    def computer_turn(self):
+        guess_row = random.randint(0, self.grid_size - 1)
+        guess_col = random.randint(0, self.grid_size - 1)
+        return guess_row, guess_col
+        
