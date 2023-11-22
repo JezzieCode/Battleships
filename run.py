@@ -34,7 +34,8 @@ class BattleshipGame:
                 if all(grid[row + i][col] == 'O' for i in range(ship_size)):
                     for i in range(ship_size):
                         grid[row + i][col] = ship_label
-                    breakimport random
+                    break
+                import random
 
 class BattleshipGame:
     def __init__(self, grid_size):
@@ -66,9 +67,10 @@ class BattleshipGame:
                     for i in range(ship_size):
                         grid[row + i][col] = ship_label
                     break
-                def print_grid(self, grid):
-        for row in grid:
-            print(" ".join(row))
+                
+        def print_grid(self, grid):
+            for row in grid:
+                print(" ".join(row))
 
     def player_turn(self):
         while True:
