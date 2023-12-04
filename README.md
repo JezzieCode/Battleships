@@ -1,32 +1,28 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Battleship Game
 
-Welcome USER_NAME,
+## Introduction
 
-This is the PP3 project and creating a battleship game.
-Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+This is a simple console-based implementation of the classic game Battleship in Python. The game is played on an 8x8 grid, and the player competes against the computer to sink each other's battleships.
 
-## Reminders
+## How to Play
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+1. **Setup:**
+    - The game begins by placing battleships on the player's and computer's grids.
+    - Ships are represented by letters (A, B, C, D, E) and have varying lengths (2 to 5 cells).
 
-## Creating the Heroku app
+2. **Player's Turn:**
+    - The player is prompted to guess a cell on the computer's grid by entering row and column numbers.
+    - The result of the guess is displayed, indicating whether it's a hit or a miss.
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+3. **Computer's Turn:**
+    - The computer randomly selects a cell on the player's grid to guess.
+    - The result is displayed, showing whether the computer's guess is a hit or a miss.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+4. **Game Progress:**
+    - The game continues with alternating turns until one player sinks all of the opponent's battleships.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+5. **Game End:**
+    - The game ends when either the player or the computer sinks all the opponent's battleships.
+    - The result is displayed, indicating whether the player won or lost.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
+## Running the Game
